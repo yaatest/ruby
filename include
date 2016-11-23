@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+puts "Running using Run_via_ssh instance".blue
+n = Run_via_ssh.new('be1.mydom', 'yaatest', 'yaatestpass')
+n.run_cmd({ "RUNNING ON #{n.hostname} for user #{n.username}":  ['echo $HOME', 'ls -la $HOME']})

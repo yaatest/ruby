@@ -1,0 +1,34 @@
+---
+ssh_user_def:           'root'
+ssh_pass_def:           'testrootpasswd'
+
+# db creds
+db_host:                'db.host.mydom'
+db_name:                'cicd'
+db_user:                'cicd'
+db_pass:                'testdbpass'
+
+# run local commands
+cmds_step_1:            ['hostname', 'uname -a']
+cmds_step_2:            ['ip ad', 'uptime']
+
+
+
+run_on_localhost:       { STEP 1:  [
+                                   'hostname',
+                                   'uptime',
+                                   'ifconfig'
+                                   ],
+                          STEP 2:  ['uname'],
+                          STEP 3:  ['ip -oneline li'] } 
+
+# run via ssh                          
+run_via_ssh1:           { STEP 1:  [
+                                  'hostname',
+                                  'uptime',
+                                   ]}
+run_via_ssh2:           { STEP 2:  ['uname']}
+run_via_ssh3:           { WHITCH VMS WE RUN:  ['qm list']}
+
+
+http_cmd:               'LANG=en_US.UTF-8 cat ssh_class.rb' 
